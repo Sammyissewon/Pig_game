@@ -74,7 +74,7 @@ btnRoll.addEventListener("click", function () {
     const dice = Math.trunc(Math.random() * 6) + 1;
 
     //2. Display dice
-    diceEl.classList.remove("hidden");
+    diceEl.classList.remove("hidden"); // 시작 때 숨겨졌던 주사위 보여주기
     diceEl.src = `asset/dice-${dice}.png`;
 
     //3. Check for rolled 1
