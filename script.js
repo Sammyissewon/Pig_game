@@ -29,10 +29,10 @@ const init = function () {
 
   // 위에서 let으로 복수 선언한 값들.
   // ⭐️상위 4개 변수는 DOM 외의 변수들. HTML로 유저에게 보여지는 내용말고, 그 뒤에서 실제로 연산이 일어날 변수들.
-  scores = [0, 0]; //6. 두 플레이어의 누적점수를 배열로 저장하는 변수
   currentScore = 0; //⭐️4. Switch 되면, currentScore는 자동으로 0으로 바뀌고, 해당 플레이어도 자동으로 전환됨. 따라서 currentScore[0,0]같이 쓰지 않음
-  activePlayer = 0; //⭐️7. 현재 플레이어. 플레이어 1부터 게임 시작이기 때문에, 0을 넣음. Switch하면 0->1(플레이어 2)로 전환
-  playing = true; // 현재 게임 진행 중 여부
+  scores = [0, 0]; //5. 두 플레이어의 누적점수를 배열로 저장하는 변수
+  activePlayer = 0; //⭐️6. 현재 플레이어. 플레이어 1부터 게임 시작이기 때문에, 0을 넣음. Switch하면 0->1(플레이어 2)로 전환
+  playing = true; // 7. 현재 게임 진행 중 여부
 
   score0El.textContent = 0;
   score1El.textContent = 0;
@@ -70,14 +70,14 @@ btnRoll.addEventListener("click", function () {
   // 이미 위에서 playing = true라는 boolean을 선언함
   // 즉 아래 코드들은 게임 중(true)일 때만 주사위 굴리기 가능하다는 의미
   if (playing) {
-    //1. Generating a random dice roll
+    //3-1. Generating a random dice roll
     const dice = Math.trunc(Math.random() * 6) + 1;
 
-    //2. Display dice
+    //3-2. Display dice
     diceEl.classList.remove("hidden"); // 시작 때 숨겨졌던 주사위 보여주기
     diceEl.src = `asset/dice-${dice}.png`;
 
-    //3. Check for rolled 1
+    //3-3. Check for rolled 1
     if (dice !== 1) {
       // Add dice to current score
       // 1 라운드 기준: 플레이어 1의 0점 + 주사위 숫자
@@ -91,6 +91,7 @@ btnRoll.addEventListener("click", function () {
   }
 });
 
+// 8.
 btnHold.addEventListener("click", function () {
   // btnRoll과 같이, 게임 중(true)일 때만 hold를 누를 수 있다는 의미
   if (playing) {
